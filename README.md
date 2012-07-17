@@ -33,9 +33,11 @@ exec(['ls', '-lha'], function(err, out, code) {
 ```
 
 The example above will call `ls -lha` safely, by passing the arguments directly
-to exec(2) without using an shell expansion/ word splitting.  It returns a callback
-with any stdout, stderr, and the exit status of the command.  The above example will
-throw an error if any errors were produced, otherwise it will just print the output
+to exec(2) without using an shell expansion/ word splitting.
+
+It returns a `child_process.spawn` object, and callbacks with any stdout,
+stderr, and the exit status of the command.  The above example will throw an
+error if any errors were produced, otherwise it will just print the output
 (with a trailing newline) and exit with the exit code of `ls`.
 
 License

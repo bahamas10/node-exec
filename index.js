@@ -5,6 +5,8 @@ var spawn = require('child_process').spawn;
  *
  * @param args      array   ex. [ 'ls', '-lha' ]
  * @param callback  function(err, out, code)
+ *
+ * @return spawn object
  */
 module.exports = function(args, callback) {
   var out = '',
