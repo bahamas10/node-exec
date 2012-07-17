@@ -8,9 +8,7 @@
     "type": "git"
   },
   "main": "index.js",
-  "dependencies": {
-    "autocast": "~ 0.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {},
   "optionalDependencies": {},
   "bin": {},
