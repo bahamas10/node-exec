@@ -1,0 +1,21 @@
+{
+  "author": "Dave Eddy <dave@daveeddy.com> (http://www.daveeddy.com)",
+  "name": "exec",
+  "description": "Call a child process with the ease of exec and safety of spawn",
+  "version": "0.0.0",
+  "repository": {
+    "url": "https://github.com/bahamas10/node-exec.git",
+    "type": "git"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "autocast": "~ 0.0.0"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "bin": {},
+  "engines": {
+    "node": "*"
+  },
+  "keywords": [ "exec", "spawn", "child", "wordsplitting", "shell" ]
+}
