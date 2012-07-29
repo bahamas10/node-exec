@@ -40,6 +40,11 @@ stderr, and the exit status of the command.  The above example will throw an
 error if any errors were produced, otherwise it will just print the output
 (with a trailing newline) and exit with the exit code of `ls`.
 
+Installation
+------------
+
+    npm install -g exec
+
 License
 -------
 
