@@ -43,7 +43,7 @@ error if any errors were produced, otherwise it will just print the output
 Installation
 ------------
 
-    npm install -g exec
+    npm install exec
 
 License
 -------
