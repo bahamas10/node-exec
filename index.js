@@ -1,4 +1,5 @@
-var spawn = require('child_process').spawn;
+var spawn = require('child_process').spawn,
+    StringDecoder = require('string_decoder').StringDecoder;
 
 /**
  * Spawn a child with the easy of exec, but safety of spawn
@@ -11,13 +12,14 @@ var spawn = require('child_process').spawn;
 module.exports = function(args, callback) {
   var out = '',
       err = '',
+      decoder = new StringDecoder,
       child = spawn(args[0], args.slice(1));
 
   child.stdout.on('data', function(data) {
-    out += data;
+    out += decoder.write(data);
   });
   child.stderr.on('data', function(data) {
-    err += data;
+    err += decoder.write(data);
   });
 
   child.on('exit', function(code) {
