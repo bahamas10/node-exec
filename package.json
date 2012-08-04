@@ -8,6 +8,9 @@
     "type": "git"
   },
   "main": "index.js",
+  "scripts" : {
+    "test": "for f in examples/*.js; do echo \"$f\"; node \"$f\" || exit 1; echo; done; echo 'Passed'"
+  },
   "dependencies": {},
   "devDependencies": {},
   "optionalDependencies": {},
