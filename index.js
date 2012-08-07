@@ -2,7 +2,7 @@ var spawn = require('child_process').spawn,
     StringDecoder = require('string_decoder').StringDecoder;
 
 /**
- * Spawn a child with the easy of exec, but safety of spawn
+ * Spawn a child with the ease of exec, but safety of spawn
  *
  * @param args      array   ex. [ 'ls', '-lha' ]
  * @param callback  function(err, out, code)
