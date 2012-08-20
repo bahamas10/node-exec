@@ -1,4 +1,5 @@
 var spawn = require('child_process').spawn,
+    v = process.version.split('.')[1],
     StringDecoder = require('string_decoder').StringDecoder;
 
 /**
@@ -12,7 +13,9 @@ var spawn = require('child_process').spawn,
 module.exports = function(args, callback) {
   var out = '',
       err = '',
-      decoder = new StringDecoder,
+      code,
+      i = 0,
+      decoder = new StringDecoder(),
       child = spawn(args[0], args.slice(1));
 
   child.stdout.on('data', function(data) {
@@ -22,8 +25,13 @@ module.exports = function(args, callback) {
     err += decoder.write(data);
   });
 
-  child.on('exit', function(code) {
-    return callback(err, out, code);
+  child.on('exit', function(c) {
+    code = c;
+    if (++i >= 2 || v < 8) callback(err, out, code);
+  });
+
+  child.on('close', function() {
+    if (++i >= 2) callback(err, out, code);
   });
 
   return child;
