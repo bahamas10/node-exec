@@ -10,13 +10,18 @@ var spawn = require('child_process').spawn,
  *
  * @return spawn object
  */
-module.exports = function(args, callback) {
+module.exports = function(args, opts, callback) {
   var out = '',
       err = '',
       code,
       i = 0,
-      decoder = new StringDecoder(),
-      child = spawn(args[0], args.slice(1));
+      decoder = new StringDecoder();
+
+  if (typeof opts === 'function') {
+    callback = opts;
+    opts = null;
+  }
+  var child = spawn(args[0], args.slice(1), opts);
 
   child.stdout.on('data', function(data) {
     out += decoder.write(data);
