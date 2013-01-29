@@ -1,6 +1,12 @@
-var spawn = require('child_process').spawn,
-    v = process.version.split('.')[1],
-    StringDecoder = require('string_decoder').StringDecoder;
+var spawn = require('child_process').spawn;
+var StringDecoder = require('string_decoder').StringDecoder;
+
+// node v0.8 changed the events that are emitted at the end
+// of spawn, this line will be used to make it possible
+// for this module to work for both v0.6 and v0.8 (and above hopefully)
+var v = process.version.split('.')[1];
+
+module.exports = exec;
 
 /**
  * Spawn a child with the ease of exec, but safety of spawn
@@ -10,19 +16,22 @@ var spawn = require('child_process').spawn,
  *
  * @return spawn object
  */
-module.exports = function(args, opts, callback) {
-  var out = '',
-      err = '',
-      code,
-      i = 0,
-      decoder = new StringDecoder();
-
+function exec(args, opts, callback) {
   if (typeof opts === 'function') {
     callback = opts;
     opts = null;
   }
-  var child = spawn(args[0], args.slice(1), opts);
+  if (typeof args === 'string') {
+    args = [args];
+  }
 
+  var out = '';
+  var err = '';
+  var code;
+  var i = 0;
+  var decoder = new StringDecoder();
+
+  var child = spawn(args[0], args.slice(1), opts);
   child.stdout.on('data', function(data) {
     out += decoder.write(data);
   });
