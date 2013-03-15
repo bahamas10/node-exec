@@ -4,6 +4,7 @@ var StringDecoder = require('string_decoder').StringDecoder;
 // node v0.8 changed the events that are emitted at the end
 // of spawn, this line will be used to make it possible
 // for this module to work for both v0.6 and v0.8 (and above hopefully)
+// see https://gist.github.com/bahamas10/3406380
 var v = process.version.split('.')[1];
 
 module.exports = exec;
@@ -22,7 +23,7 @@ function exec(args, opts, callback) {
     opts = null;
   }
   if (typeof args === 'string') {
-    args = [args];
+    args = ['/bin/sh', '-c', args];
   }
 
   var out = '';

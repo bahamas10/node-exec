@@ -8,9 +8,9 @@ Why?
 
 This module provides the best of both worlds of `spawn` and `exec`
 
-It will simply return 2 strings containing stdout and stderr
+It will callback with 2 strings containing stdout and stderr
 (like `child_process.exec`), but will take an array of process arguments
-(like `child_process.spawn`) to avoid any nasty shell expansion.
+(like `child_process.spawn`) to avoid any potentially harmful shell expansion.
 
 Usage
 -----
