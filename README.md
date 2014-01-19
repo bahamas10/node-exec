@@ -6,6 +6,13 @@ Call a child process with the ease of exec and safety of spawn
 
 **Note:** The API has changed slightly with `v0.1.0` of this module
 
+**UPDATE:** If your version of node supports `child_process.execFile`, consider
+using that instead, as that does everything this module does and more... the usage
+is slightly different.
+
+[http://nodejs.org/api/child_process.html#child_process_child_process_execfile_file_args_options_callback]
+(http://nodejs.org/api/child_process.html#child_process_child_process_execfile_file_args_options_callback)
+
 Why?
 ----
 
