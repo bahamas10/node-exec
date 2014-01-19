@@ -52,7 +52,7 @@ and `error` event, and `err` is set to that error object.
 
 For backwards compatibility with `child_process.exec`, it is also possible
 to pass a string to `exec`.  The string will automatically be converted to
-`['/bin/sh', '-c', '{string}'], which will cause the string to be parsed on the
+`['/bin/sh', '-c', '{string}']`, which will cause the string to be parsed on the
 shell.  Note that if you use this method, you are at risk of shell expansion,
 word splitting, and other shell features that could be potentially unsafe.
 
