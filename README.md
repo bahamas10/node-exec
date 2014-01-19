@@ -29,9 +29,6 @@ Example
 var exec = require('exec');
 
 exec(['ls', '-lha'], function(err, out, code) {
-  // if `err` is an Error object, something went wrong spawing the command.
-  // the `err` object is the same as `.on('error', function(e) {})` of the
-  // spawn object
   if (err instanceof Error)
     throw err;
   process.stderr.write(err);
@@ -47,6 +44,9 @@ It returns a `child_process.spawn` object, and callbacks with any stdout,
 stderr, and the exit status of the command.  The above example will throw an
 error if anything went wrong during the spawn, otherwise it will print the stdout,
 stderr, and exit with the exit code of `ls`.
+
+**NOTE:** If `err` is an instanceof `Error`, it means that `child_process.spawn` emitted
+and `error` event, and `err` is set to that error object.
 
 `err` and `out` are encoded as`utf-8` strings by default
 
