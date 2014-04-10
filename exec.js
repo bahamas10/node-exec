@@ -27,6 +27,7 @@ function exec(args, opts, callback) {
   var err;
   var encoding;
   var timeout;
+  var done = false;
 
   // check encoding
   if (opts.encoding !== 'buffer' && Buffer.isEncoding(opts.encoding)) {
@@ -63,6 +64,10 @@ function exec(args, opts, callback) {
   });
 
   child.on('close', function(code) {
+    if (done)
+        return;
+    done = true;
+
     if (timeout)
       clearTimeout(timeout);
 
@@ -75,6 +80,10 @@ function exec(args, opts, callback) {
   });
 
   child.on('error', function(e) {
+    if (done)
+        return;
+    done = true;
+    
     callback(e);
   });
 
