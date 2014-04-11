@@ -83,7 +83,7 @@ function exec(args, opts, callback) {
     if (done)
         return;
     done = true;
-    
+
     callback(e);
   });
 
