@@ -12,6 +12,8 @@ module.exports = exec;
  * @return spawn object
  */
 function exec(args, opts, callback) {
+  if (arguments.length < 2)
+    throw new Error('invalid arguments');
   if (typeof opts === 'function') {
     callback = opts;
     opts = {};
