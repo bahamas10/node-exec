@@ -47,23 +47,32 @@ function exec(args, opts, callback) {
   var child = spawn(args[0], args.slice(1), opts);
 
   if (encoding) {
-    child.stdout.setEncoding(encoding);
-    child.stderr.setEncoding(encoding);
+    if (child.stdout) {
+		  child.stdout.setEncoding(encoding);
+    }
+		if (child.stderr) {
+      child.stderr.setEncoding(encoding);
+    }
   }
 
-  child.stdout.on('data', function(data) {
-    if (encoding)
-      out += data;
-    else
-      out.push(data);
-  });
+  if (child.stdout) {
+    child.stdout.on('data', function(data) {
+      if (encoding)
+        out += data;
+      else
+        out.push(data);
+    });
+  }
 
-  child.stderr.on('data', function(data) {
-    if (encoding)
-      err += data;
-    else
-      err.push(data);
-  });
+
+  if (child.strerr) {
+    child.stderr.on('data', function(data) {
+      if (encoding)
+        err += data;
+      else
+        err.push(data);
+    });
+  }
 
   child.on('close', function(code) {
     if (done)
