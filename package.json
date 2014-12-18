@@ -2,7 +2,7 @@
   "name": "exec",
   "description": "Call a child process with the ease of exec and safety of spawn",
   "author": "Dave Eddy <dave@daveeddy.com> (http://www.daveeddy.com)",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "repository": {
     "url": "https://github.com/bahamas10/node-exec.git",
     "type": "git"
