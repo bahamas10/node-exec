@@ -48,9 +48,9 @@ function exec(args, opts, callback) {
 
   if (encoding) {
     if (child.stdout) {
-		  child.stdout.setEncoding(encoding);
+      child.stdout.setEncoding(encoding);
     }
-		if (child.stderr) {
+    if (child.stderr) {
       child.stderr.setEncoding(encoding);
     }
   }
@@ -76,7 +76,7 @@ function exec(args, opts, callback) {
 
   child.on('close', function(code) {
     if (done)
-        return;
+      return;
     done = true;
 
     if (timeout)
@@ -92,7 +92,7 @@ function exec(args, opts, callback) {
 
   child.on('error', function(e) {
     if (done)
-        return;
+      return;
     done = true;
 
     callback(e);
