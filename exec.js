@@ -65,7 +65,7 @@ function exec(args, opts, callback) {
   }
 
 
-  if (child.strerr) {
+  if (child.stderr) {
     child.stderr.on('data', function(data) {
       if (encoding)
         err += data;
