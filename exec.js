@@ -1,6 +1,7 @@
 var spawn = require('child_process').spawn;
+var util = require('util');
 
-module.exports = exec;
+module.exports = util.deprecate(exec, 'exec: use child_process.execFile instead');
 
 /**
  * Spawn a child with the ease of exec, but safety of spawn
