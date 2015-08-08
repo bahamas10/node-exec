@@ -9,14 +9,14 @@
   },
   "main": "exec.js",
   "scripts" : {
-    "test": "for f in examples/*.js; do echo \"$f\"; node \"$f\" || exit 1; echo; done; echo 'Passed'"
+    "test": "for f in tests/*.js; do echo \"$f\"; node \"$f\" || exit 1; echo; done; echo 'Passed'"
   },
   "dependencies": {},
   "devDependencies": {},
   "optionalDependencies": {},
   "bin": {},
   "engines": {
-    "node": ">= v0.8.0"
+    "node": ">= v0.9.1"
   },
   "keywords": [ "exec", "spawn", "child", "wordsplitting", "shell" ]
 }
